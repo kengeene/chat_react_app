@@ -7,6 +7,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 function App() {
+  localStorage.removeItem('authenticated');
+  localStorage.removeItem('userDetails');
   return (
     <div className="App">
       <MainApp />
