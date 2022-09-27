@@ -9,12 +9,11 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import { faker } from '@faker-js/faker';
 
-export default function ButtomBar({profileData}){
+export default function ButtomBar({profileData, setPreviousMessages, previousMessages}){
   const {userName, avatar} = profileData;
-  const [ previousMessages, setPreviousMessages] = useState(JSON.parse(localStorage.getItem('messages')));
   const [ message, setMessage] = useState('');
   const newMessageObject = {
-        name: userName,
+        userName,
         avatar,
         message,
       }
