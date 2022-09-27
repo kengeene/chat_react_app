@@ -1,7 +1,8 @@
-import MessageDisplay from './MessageDisplay';
+import Chat from './chat/';
+import React from 'react';
 
 const MainApp = () => {
-  return <MessageDisplay/>;
+  return <Chat/>;
 };
 
 export default MainApp;
