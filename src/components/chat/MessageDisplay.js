@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, {useEffect} from 'react';
 import Paper from '@mui/material/Paper';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
@@ -12,6 +12,9 @@ import Avatar from '@mui/material/Avatar';
 
 
 export default function Chatbox({previousMessages}) {
+    useEffect(()=>{
+        window.scrollTo(0, document.body.scrollHeight);
+    });
   return (
     <React.Fragment>
       <CssBaseline />
@@ -19,7 +22,7 @@ export default function Chatbox({previousMessages}) {
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0 }}>
           <span>Chat App</span>
         </Typography>
-        <List sx={{ mb: 2 }}>
+        <List sx={{ mb: 2}} id="scrollList">
           {previousMessages.map(({ id, userName, message, avatar }) => (
             <React.Fragment key={id}>
               {id === 1 && (
