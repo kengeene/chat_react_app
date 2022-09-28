@@ -23,5 +23,7 @@
         "react"
     ],
     "rules": {
+        "react-hooks/exhaustive-deps": "off",
+        "react/prop-types": "off"
     }
 }

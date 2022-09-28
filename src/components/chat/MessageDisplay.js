@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, {useEffect} from 'react';
 import Paper from '@mui/material/Paper';
 import CssBaseline from '@mui/material/CssBaseline';
