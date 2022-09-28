@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
 import AppBar from '@mui/material/AppBar';
@@ -18,7 +18,24 @@ export default function ButtomBar({profileData, setPreviousMessages, previousMes
         message,
       }
 
-  const sendMessage = (previousMessages) => {
+ const onStorageUpdate = (e) => {
+    const { key, newValue } = e;
+    // Set messages if messages key in local storage changes
+    if (key === "messages") {
+      setPreviousMessages(JSON.parse(newValue));
+    }
+  };
+
+  // Call the on storage method when storage is changed
+  useEffect(() => {
+    setMessage('');
+    window.addEventListener("storage", onStorageUpdate);
+    return () => {
+      window.removeEventListener("storage", onStorageUpdate);
+    };
+  }, []);
+
+  const sendMessage = () => {
     newMessageObject.id = faker.datatype.uuid();
     if(previousMessages){
     setPreviousMessages([...previousMessages, newMessageObject]);
@@ -44,7 +61,7 @@ export default function ButtomBar({profileData, setPreviousMessages, previousMes
           onChange={(e)=> setMessage(e.target.value)}
           />
           <Box sx={{ flexGrow: 1 }} />
-        <IconButton color="inherit" onClick={()=> sendMessage(previousMessages)}>
+        <IconButton color="inherit" onClick={sendMessage}>
             <SendIcon />
           </IconButton>
         </Toolbar>
