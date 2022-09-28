@@ -48,6 +48,14 @@ export default function ButtomBar({profileData, setPreviousMessages, previousMes
     }
   };
 
+    const handleKeypress = e => {
+      // Will trigger when enter key is pressed
+    if (e.keyCode === 13) {
+      setMessage(e.target.value);
+      sendMessage();
+    }
+  };
+
     return (
       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, textAlign: 'center'}}>
         <Toolbar>
@@ -57,9 +65,10 @@ export default function ButtomBar({profileData, setPreviousMessages, previousMes
           sx={{backgroundColor: '#ffffff', borderRadius: '15px', padding: '5px 30px'}}
           fullWidth
           onChange={(e)=> setMessage(e.target.value)}
+          onKeyPress={handleKeypress}
           />
           <Box sx={{ flexGrow: 1 }} />
-        <IconButton color="inherit" onClick={sendMessage}>
+        <IconButton color="inherit" onClick={sendMessage} >
             <SendIcon />
           </IconButton>
         </Toolbar>
