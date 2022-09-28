@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, {useState} from 'react';
 import TextField from '@mui/joy/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
