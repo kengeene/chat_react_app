@@ -1,10 +1,10 @@
-import Chat from './chat/';
+import Chat from '../chat';
 import React, { useState } from 'react';
-import Login from './login';
+import Login from '../login';
 import { faker } from '@faker-js/faker';
-import Store, { setProfileData } from '../store';
+import Store, { setProfileData } from '../../store';
 
-const MainApp = () => {
+const Layout = () => {
   const { avatar } = Store.getState();
   const [userLoggedIn, setUserLoggedIn] = useState(localStorage.getItem('authenticated') && avatar);
   function loginUser(userName){
@@ -20,4 +20,4 @@ const MainApp = () => {
   }
 };
 
-export default MainApp;
+export default Layout;
