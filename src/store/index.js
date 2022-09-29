@@ -1,23 +1,23 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { createSlice, configureStore } from '@reduxjs/toolkit'
 
 const userProfile = createSlice({
-  name: "profile",
+  name: 'profile',
   initialState: {
     userName: null,
     avatar: null,
-    userId: null,
+    userId: null
   },
   reducers: {
     setProfileData: (state, action) => {
-      state.value = action.payload;
-    },
-  },
-});
+      state.value = action.payload
+    }
+  }
+})
 
-export const { setProfileData, decremented } = userProfile.actions;
+export const { setProfileData, decremented } = userProfile.actions
 
 const store = configureStore({
-  reducer: userProfile.reducer,
-});
+  reducer: userProfile.reducer
+})
 
-export default store;
+export default store

@@ -1,0 +1,5 @@
+{
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "typescript.format.enable": false,
+    "eslint.format.enable": false
+}
