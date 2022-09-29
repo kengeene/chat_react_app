@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Getting Started with Chat App
+
+This is a simple Chat app created in React, that supports multiple users using different tabs.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+A live version of the site can be found below:
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f1de6b92-67de-473a-8dac-cc1deed588eb/deploy-status)](https://app.netlify.com/sites/super-faloodeh-d94e23/deploys) https://super-faloodeh-d94e23.netlify.app/
 
 ## Available Scripts
 
