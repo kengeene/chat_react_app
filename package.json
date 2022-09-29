@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@faker-js/faker": "^7.5.0",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.6",
     "@mui/joy": "^5.0.0-alpha.47",
@@ -20,7 +21,7 @@
   },
   "scripts": {
     "lint": "eslint  --fix src/**/*.js",
-    "format": "prettier src/**/*.js --write. --config ./.prettierrc",
+    "format": "prettier src/**/*.js --write. --config './.prettierrc'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -45,7 +46,6 @@
     ]
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.5.0",
     "eslint": "^8.24.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",

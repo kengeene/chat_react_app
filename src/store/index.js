@@ -1,7 +1,7 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const userProfile = createSlice({
-  name: "profile",
+  name: 'profile',
   initialState: {
     userName: null,
     avatar: null,
@@ -9,6 +9,7 @@ const userProfile = createSlice({
   },
   reducers: {
     setProfileData: (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.value = action.payload;
     },
   },

@@ -1,14 +1,12 @@
-import Chat from "../chat";
-import React, { useState } from "react";
-import Login from "../login";
-import { faker } from "@faker-js/faker";
-import Store, { setProfileData } from "../../store";
+import { faker } from '@faker-js/faker';
+import React, { useState } from 'react';
+import Store, { setProfileData } from '../../store';
+import Chat from '../chat';
+import Login from '../login';
 
-const Layout = () => {
+function Layout() {
   const { avatar } = Store.getState();
-  const [userLoggedIn, setUserLoggedIn] = useState(
-    localStorage.getItem("authenticated") && avatar
-  );
+  const [userLoggedIn, setUserLoggedIn] = useState(localStorage.getItem('authenticated') && avatar);
   function loginUser(userName) {
     Store.dispatch(
       setProfileData({
@@ -17,15 +15,15 @@ const Layout = () => {
         userId: faker.datatype.uuid(),
       })
     );
-    localStorage.setItem("authenticated", true);
+    localStorage.setItem('authenticated', true);
     setUserLoggedIn(true);
   }
 
   if (userLoggedIn) {
     return <Chat />;
-  } else {
-    return <Login loginUser={loginUser} />;
   }
-};
+  // eslint-disable-next-line react/jsx-no-bind
+  return <Login loginUser={loginUser} />;
+}
 
 export default Layout;
