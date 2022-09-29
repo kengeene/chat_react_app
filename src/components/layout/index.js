@@ -20,7 +20,7 @@ function Layout() {
   }
 
   if (userLoggedIn) {
-    return <Chat />;
+    return <Chat setUserLoggedIn={setUserLoggedIn} />;
   }
   // eslint-disable-next-line react/jsx-no-bind
   return <Login loginUser={loginUser} />;

@@ -12,10 +12,21 @@ const userProfile = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.value = action.payload;
     },
+    logoutProfile: (state) => {
+      // eslint-disable-next-line no-console
+      console.log('logging out');
+      localStorage.removeItem('authenticated');
+      // eslint-disable-next-line no-param-reassign
+      state.value = {
+        userName: null,
+        avatar: null,
+        userId: null,
+      };
+    },
   },
 });
 
-export const { setProfileData, decremented } = userProfile.actions;
+export const { setProfileData, logoutProfile } = userProfile.actions;
 
 const store = configureStore({
   reducer: userProfile.reducer,
