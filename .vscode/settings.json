@@ -1,5 +1,17 @@
 {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "typescript.format.enable": false,
-    "eslint.format.enable": false
+"eslint.alwaysShowStatus": true,
+"editor.formatOnSave": true,
+"[javascript]": {
+   "editor.formatOnSave": true
+ },
+"editor.codeActionsOnSave": {
+"source.fixAll": true,
+    "source.organizeImports": true
+},
+"files.autoSave": "off",
+  "eslint.options": {
+    "extensions": [".js", ".jsx"]
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 }
+
