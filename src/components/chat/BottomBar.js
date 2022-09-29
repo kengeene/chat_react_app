@@ -1,22 +1,26 @@
-import React, {useState, useEffect} from 'react';
-import TextField from '@mui/material/TextField';
-import SendIcon from '@mui/icons-material/Send';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import { faker } from '@faker-js/faker';
+import React, { useState, useEffect } from "react";
+import TextField from "@mui/material/TextField";
+import SendIcon from "@mui/icons-material/Send";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import { faker } from "@faker-js/faker";
 
-export default function ButtomBar({profileData, setPreviousMessages, previousMessages}){
-  const {userName, avatar} = profileData;
-  const [ message, setMessage] = useState('');
+export default function ButtomBar({
+  profileData,
+  setPreviousMessages,
+  previousMessages,
+}) {
+  const { userName, avatar } = profileData;
+  const [message, setMessage] = useState("");
   const newMessageObject = {
-        userName,
-        avatar,
-        message,
-      }
+    userName,
+    avatar,
+    message,
+  };
 
- const onStorageUpdate = (e) => {
+  const onStorageUpdate = (e) => {
     const { key, newValue } = e;
     // Set messages if messages key in local storage changes
     if (key === "messages") {
@@ -26,7 +30,7 @@ export default function ButtomBar({profileData, setPreviousMessages, previousMes
 
   // Call the on storage method when storage is changed
   useEffect(() => {
-    setMessage('');
+    setMessage("");
     window.addEventListener("storage", onStorageUpdate);
     return () => {
       window.removeEventListener("storage", onStorageUpdate);
@@ -35,43 +39,50 @@ export default function ButtomBar({profileData, setPreviousMessages, previousMes
 
   const sendMessage = () => {
     newMessageObject.id = faker.datatype.uuid();
-    if(previousMessages){
-    setPreviousMessages([...previousMessages, newMessageObject]);
-    localStorage.setItem('messages', JSON.stringify([
-      ...previousMessages, newMessageObject
-    ]));
+    if (previousMessages) {
+      setPreviousMessages([...previousMessages, newMessageObject]);
+      localStorage.setItem(
+        "messages",
+        JSON.stringify([...previousMessages, newMessageObject])
+      );
     } else {
-    setPreviousMessages([newMessageObject]);
-      localStorage.setItem('messages', JSON.stringify([
-      newMessageObject
-    ]));
+      setPreviousMessages([newMessageObject]);
+      localStorage.setItem("messages", JSON.stringify([newMessageObject]));
     }
   };
 
-    const handleKeypress = e => {
-      // Will trigger when enter key is pressed
+  const handleKeypress = (e) => {
+    // Will trigger when enter key is pressed
     if (e.keyCode === 13) {
       setMessage(e.target.value);
       sendMessage();
     }
   };
 
-    return (
-      <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, textAlign: 'center'}}>
-        <Toolbar>
-          <TextField
+  return (
+    <AppBar
+      position="fixed"
+      color="primary"
+      sx={{ top: "auto", bottom: 0, textAlign: "center" }}
+    >
+      <Toolbar>
+        <TextField
           id="standard-basic"
           variant="standard"
-          sx={{backgroundColor: '#ffffff', borderRadius: '15px', padding: '5px 30px'}}
+          sx={{
+            backgroundColor: "#ffffff",
+            borderRadius: "15px",
+            padding: "5px 30px",
+          }}
           fullWidth
-          onChange={(e)=> setMessage(e.target.value)}
+          onChange={(e) => setMessage(e.target.value)}
           onKeyPress={handleKeypress}
-          />
-          <Box sx={{ flexGrow: 1 }} />
-        <IconButton color="inherit" onClick={sendMessage} >
-            <SendIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    );
+        />
+        <Box sx={{ flexGrow: 1 }} />
+        <IconButton color="inherit" onClick={sendMessage}>
+          <SendIcon />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
+  );
 }
